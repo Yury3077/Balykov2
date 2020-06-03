@@ -15,7 +15,7 @@ def push(elem: Any) -> None:
     """
     global l
     l.append(elem)
-    return l
+    return None
 
 
 def pop() -> Any:
