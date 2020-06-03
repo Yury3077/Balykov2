@@ -3,6 +3,8 @@ My little Stack
 """
 from typing import Any
 
+l = []
+
 
 def push(elem: Any) -> None:
     """
@@ -11,8 +13,9 @@ def push(elem: Any) -> None:
     :param elem: element to be pushed
     :return: Nothing
     """
-    print(elem)
-    return None
+    global l
+    l.append(elem)
+    return l
 
 
 def pop() -> Any:
@@ -21,7 +24,13 @@ def pop() -> Any:
 
     :return: popped element
     """
-    return None
+    global l
+    if len(l) == 0:
+        return None
+    else:
+        last = l[len(l)-1]
+        l.pop(len(l)-1)
+    return last
 
 
 def peek(ind: int = 0) -> Any:
@@ -31,8 +40,12 @@ def peek(ind: int = 0) -> Any:
     :param ind: index of element (count from the top, 0 - top, 1 - first from top, etc.)
     :return: peeked element or None if no element in this place
     """
-    print(ind)
-    return None
+    global l
+    if ind > len(l):
+        return None
+    else:
+        return l[(len(l)-1) - ind]
+
 
 
 def clear() -> None:
@@ -41,4 +54,15 @@ def clear() -> None:
 
     :return: None
     """
+    global l
+    l = []
     return None
+
+
+if __name__ == "__main__":
+    push(4)
+    push(7)
+    print(push(5))
+    clear()
+    print(l)
+
